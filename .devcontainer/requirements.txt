@@ -1,0 +1,10 @@
+# qiskit
+# qiskit-aer
+# qiskit[visualization]
+# qiskit-ibm-runtime
+jupyter
+ipykernel
+numpy
+scipy
+matplotlib
+pandas
