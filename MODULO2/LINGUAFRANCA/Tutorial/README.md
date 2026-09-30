@@ -65,9 +65,12 @@ curl -Ls https://install.lf-lang.org | sudo bash -s cli
 ```
 
 También es posible utilizar un argumento `--prefix=<path>` para
-seleccionar una ubicación diferente de instalación.
+seleccionar una ubicación diferente de instalación. Por ejemplo, para un **codespace de Github** *no configurado* se sugiere:
 
-curl -Ls https://install.lf-lang.org | sudo bash -s cli --prefix=/home/codespace/.local/
+``` bash
+curl -Ls https://install.lf-lang.org | bash -s cli --prefix=/home/codespace/.local/
+```
+
 
 ### Extensión para Visual Studio Code
 
@@ -103,16 +106,15 @@ En un entorno docente conviene comprobar estos comandos antes de
 comenzar los ejercicios.
 
 > **Nota:** Para Windows, la documentación actual recomienda utilizar
-> **WSL** para la instalación de LF. El tutorial de CPS-IoT Week 2026
-> también utiliza esta estrategia.
+> **WSL** para la instalación de LF.
 
 ------------------------------------------------------------------------
 
 # Tutorial
 
 La siguiente secuencia está organizada a partir de los tutoriales
-oficiales de Lingua Franca y puede utilizarse como ruta de aprendizaje
-para el curso de Sistemas de Tiempo-Real.
+oficiales de **Lingua Franca** y puede utilizarse como ruta de aprendizaje
+para el curso de **Sistemas de Tiempo-Real**.
 
 ## 1. A First Reactor
 
@@ -223,16 +225,16 @@ reactor Sensor {
 }
 ```
 
-El reactor puede conectarse posteriormente con un controlador y un
-actuador.
+El reactor puede conectarse posteriormente con un **controlador** y un
+**actuador**.
 
-La composición de reactors permite estudiar:
+La composición de *reactors* permite estudiar:
 
 -   Modularidad.
 -   Interfaces mediante puertos.
 -   Flujo de datos.
 -   Dependencias entre reactions.
--   Deterministic concurrency.
+-   Concurrencia determinística.
 -   Jerarquías de componentes.
 -   Diagramas automáticos del sistema.
 
@@ -245,17 +247,11 @@ La composición de reactors permite estudiar:
 
 # Tutorial on Lingua Franca in CPS-IoT Week 2026
 
-El tutorial de **CPS-IoT Week 2026** constituye un recurso especialmente
-relevante para complementar este tutorial académico.
-
-El evento presentó Lingua Franca como un lenguaje de coordinación de
-código abierto para la integración determinista de sistemas
+El pasado **11 de mayo de 2026** se realizó en Francia el [**Cyber-Physical Systems and IoT Week 2026**](https://cps-iot-week2026.inria.fr/). En dicho evento se llevó a cabo un tutorial sobre **Lingua Franca**, donde este se presentó como un lenguaje de coordinación de
+*código abierto* para la integración determinista de sistemas
 ciberfísicos.
 
-Se realizó el **11 de mayo de 2026**, en Saint-Malo, Francia, como
-actividad asociada a CPS-IoT Week 2026.
-
-El tutorial tuvo una duración aproximada de cuatro horas y combinó:
+Los temas del Tutorial fueron:
 
 1.  Introducción conceptual.
 2.  Demostraciones de sistemas CPS.
@@ -280,29 +276,13 @@ proyecto:
 
 -   [Lingua Franca --- Videos](https://www.lf-lang.org/docs/videos/)
 
-### Temas especialmente relevantes para Sistemas de Tiempo-Real
-
-El tutorial de CPS-IoT Week 2026 permite profundizar en:
-
--   Reactor-oriented programming.
--   Reactors, ports and connections.
--   Timers.
--   Logical time.
--   Deterministic concurrency.
--   Distributed/federated execution.
--   Integración de sistemas ciberfísicos.
--   Programación con C y Python.
--   Uso de VS Code.
--   LF Playground.
 
 ------------------------------------------------------------------------
 
 # Lingua Franca's Playground
 
 El **Lingua Franca Playground** contiene numerosos ejemplos que pueden
-utilizarse para complementar las prácticas del curso.
-
-El repositorio permite:
+utilizarse para complementar el entendimiento del uso de esta herramientas. Entre otras cosas, su repositorio permite:
 
 -   Explorar ejemplos de programas LF.
 -   Ejecutarlos localmente.
@@ -325,33 +305,12 @@ git clone https://github.com/lf-lang/playground-lingua-franca.git
 cd playground-lingua-franca
 ```
 
-Después se puede abrir el proyecto con VS Code:
-
-``` bash
-code .
-```
-
-Los ejemplos se encuentran en:
-
-``` text
-examples/
-```
-
-Desde VS Code se puede utilizar el comando:
-
-``` text
-Lingua Franca: Build and Run
-```
-
-El Playground también proporciona entornos de desarrollo basados en la
-nube mediante **GitHub Codespaces** y **Gitpod**.
-
 ------------------------------------------------------------------------
 
 # Plataformas Embebidas
 
 Una de las características particularmente interesantes de Lingua Franca
-para un curso de **Sistemas de Tiempo-Real** es la posibilidad de
+para el curso de **Sistemas de Tiempo-Real** es la posibilidad de
 utilizar LF en plataformas embebidas.
 
 La documentación del proyecto incluye soporte y plantillas para
@@ -371,7 +330,7 @@ posteriormente puede ser compilado y cargado utilizando `arduino-cli`.
 ### Conceptos a estudiar
 
 La utilización de LF sobre Arduino permite relacionar los conceptos
-abstractos del lenguaje con un sistema embebido real:
+abstractos del lenguaje con un **sistema embebido real**:
 
 ``` text
 Sensor
@@ -396,31 +355,6 @@ Esto permite estudiar experimentalmente:
 -   Generated C code.
 -   Hardware interaction.
 
-------------------------------------------------------------------------
-
-# Propuesta de secuencia para el curso
-
-Una posible secuencia didáctica basada en estos recursos es:
-
-  Etapa   Tema                Actividad
-  ------- ------------------- -----------------------------------
-  1       Introducción a LF   Lectura de la documentación
-  2       Instalación         Java 17+, LF CLI y VS Code
-  3       Hello World         Primer reactor
-  4       Eventos             `startup`, reactions y eventos
-  5       Tiempo lógico       Introducción a logical time
-  6       Timers              Tareas periódicas
-  7       Reactors            Modelado de componentes
-  8       Ports               Interfaces entre componentes
-  9       Connections         Comunicación entre reactors
-  10      Composición         Sensor--Controller--Actuator
-  11      Determinismo        Orden de ejecución y concurrencia
-  12      Playground          Exploración de ejemplos
-  13      CPS-IoT Tutorial    Ejercicios prácticos
-  14      Embedded            Implementación sobre Arduino
-  15      Proyecto final      Sistema de Tiempo-Real completo
-
-------------------------------------------------------------------------
 
 # Referencias principales
 
@@ -448,15 +382,8 @@ Una posible secuencia didáctica basada en estos recursos es:
 
 ## Observación sobre versiones
 
-La documentación oficial consultada actualmente corresponde a **Lingua
-Franca 0.13.0**. Las páginas de documentación pueden cambiar entre
-versiones; por ello, para las prácticas del curso se recomienda mantener
-una versión del toolchain consistente entre los estudiantes y registrar
-la versión utilizada mediante:
+La documentación oficial consultada actualmente corresponde a **Lingua Franca 0.13.0**. Las páginas de documentación pueden cambiar entre versiones; por ello, se recomienda mantener una versión del *toolchain* consistente con la versión utilizada, verificándola mediante:
 
 ``` bash
 lfc --version
 ```
-
-Para un curso académico, esta práctica ayuda a evitar diferencias de
-sintaxis, APIs o herramientas entre instalaciones.
