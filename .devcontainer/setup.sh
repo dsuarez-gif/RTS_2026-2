@@ -6,6 +6,11 @@ echo "=========================================="
 echo " Real-Time Systems Environment Setup"
 echo "=========================================="
 
+echo "==> Removing obsolete Yarn repository..."
+
+sudo rm -f /etc/apt/sources.list.d/yarn.list
+sudo rm -f /etc/apt/sources.list.d/yarnpkg.list
+
 echo ""
 echo "==> Updating package lists..."
 sudo apt-get update
@@ -76,7 +81,10 @@ python -m ipykernel install \
 echo ""
 echo "==> Configuring shell..."
 
-if ! grep -q "alias ll=" "$HOME/.bashrc"; then
+# Configure ll alias
+if grep -qE '^[[:space:]]*alias ll=' "$HOME/.bashrc"; then
+    sed -i "s/^[[:space:]]*alias ll=.*/alias ll='ls -alF'/" "$HOME/.bashrc"
+else
     echo "alias ll='ls -alF'" >> "$HOME/.bashrc"
 fi
 
