@@ -1,0 +1,86 @@
+target C {
+    timeout: 500 ms
+}
+
+
+// ---------------------------------------------------------
+// Sensor
+// ---------------------------------------------------------
+reactor Sensor(period: time = 50 ms) {
+
+    output reading: int
+
+    timer sample(0, period)
+
+    reaction(sample) -> reading {=
+
+        static int sensor_value = 0;
+
+        // Simulated sensor acquisition
+        sensor_value++;
+
+        lf_print("Sensor: reading = %d", sensor_value);
+
+        lf_set(reading, sensor_value);
+    =}
+}
+
+
+// ---------------------------------------------------------
+// Controller
+// ---------------------------------------------------------
+reactor Controller {
+
+    input reading: int
+    output command: int
+
+    reaction(reading) -> command {=
+
+        int measurement = reading->value;
+
+        // Simple control law:
+        // desired_value = 10
+        int desired_value = 10;
+        int control = desired_value - measurement;
+
+        lf_print("Controller: measurement = %d, command = %d",
+                 measurement, control);
+
+        lf_set(command, control);
+    =}
+}
+
+
+// ---------------------------------------------------------
+// Actuator
+// ---------------------------------------------------------
+reactor Actuator(dl: time = 5 ms) {
+
+    input command: int
+
+    reaction(command) {=
+
+        lf_print("Actuator: applying command = %d",
+                 command->value);
+
+    =} deadline(dl) {=
+
+        lf_print("******* DEADLINE MISSED *******");
+        lf_print("Actuator: command = %d arrived too late",
+                 command->value);
+    =}
+}
+
+
+// ---------------------------------------------------------
+// Main system
+// ---------------------------------------------------------
+main reactor SensorControllerActuator {
+
+    sensor = new Sensor(period = 50 ms)
+    controller = new Controller()
+    actuator = new Actuator(dl = 5 ms)
+
+    sensor.reading -> controller.reading
+    controller.command -> actuator.command
+}

@@ -9,18 +9,23 @@
                 "ms-python.python",
                 "ms-python.vscode-pylance",
                 "ms-toolsai.jupyter",
-                "lf-lang.vscode-lingua-franca"
+                "lf-lang.vscode-lingua-franca",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools"
             ],
+
             "settings": {
                 "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.analysis.typeCheckingMode": "basic"
+                "python.analysis.typeCheckingMode": "basic",
+
+                "cmake.configureOnOpen": false
             }
         }
     },
 
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cmake openjdk-17-jdk && python -m pip install --upgrade pip && python -m pip install -r .devcontainer/requirements.txt && curl -Ls https://install.lf-lang.org | bash -s cli --prefix=/home/vscode/.local/ && echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.bashrc && echo \"alias ll='ls -alF'\" >> ~/.bashrc && echo 'Devcontainer setup is complete!'",
+    "postCreateCommand": "bash .devcontainer/setup.sh",
 
-    "postStartCommand": "echo 'Welcome to this Real-Time Systems Environment!' && echo '--- Versions ---' && cmake --version && java --version && lfc --version",
+    "postStartCommand": "echo 'Welcome to this Environment for Real-Time Programming!' && echo '--- Installed versions ---' && cmake --version | head -n 1 && java --version 2>&1 | head -n 1 && gcc --version | head -n 1 && lfc --version",
 
     "remoteUser": "vscode"
 }

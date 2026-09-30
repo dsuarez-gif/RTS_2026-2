@@ -1,0 +1,12 @@
+target Cpp
+
+reactor Hello {
+  reaction(startup) {=
+    #include <iostream>   // include inside the reaction block
+    std::cout << "Hello from Lingua Franca with C++!" << std::endl;
+  =}
+}
+
+main reactor {
+  a = new Hello();
+}

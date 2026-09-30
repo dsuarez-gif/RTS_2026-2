@@ -1,10 +1,17 @@
-# qiskit
-# qiskit-aer
-# qiskit[visualization]
-# qiskit-ibm-runtime
-jupyter
-ipykernel
 numpy
 scipy
 matplotlib
 pandas
+networkx
+jupyter
+ipykernel
+sympy
+
+# qiskit
+# qiskit-aer
+# qiskit[visualization]
+# qiskit-ibm-runtime
+# qiskit-finance
+# pennylane
+# quimb
+# yfinance
